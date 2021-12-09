@@ -2,7 +2,7 @@ import React from "react"
 
 const Ingredient = (props) => {
 	return (
-		<li>
+		<li style={{background: props.ingredient.color}}>
 				{props.isList ?
 				<button onClick={() => props.addToBurger(props.ingredient)}>+</button>
 				:
