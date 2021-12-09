@@ -4,7 +4,6 @@ import { ingredients } from '../../data/burger-data'
 import IngredientList from './IngredientList'
 import BurgerStack  from './BurgerStack'
 import { useState } from 'react'
-import Ingredient from './Ingredient'
 
 
 const BurgerShop = () => {
@@ -32,6 +31,8 @@ const BurgerShop = () => {
       </nav>
       <section>
         <IngredientList 
+        //add ingredients=ingredients
+          ingredients={ingredients}
           stack={stack}
           addToBurger={addToBurger}
         />
