@@ -31,13 +31,12 @@ const BurgerShop = () => {
       </nav>
       <section>
         <IngredientList 
-        //add ingredients=ingredients
           ingredients={ingredients}
           stack={stack}
           addToBurger={addToBurger}
         />
         <BurgerStack 
-          ingredients={ingredients}
+          ingredients={stack}
           removeFromBurger={removeFromBurger}
         />
       </section>
