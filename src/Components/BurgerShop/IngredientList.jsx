@@ -10,6 +10,7 @@ const IngredientList = (props) => {
             idx={idx}
             ingredient={ingredient}
             isList={true}
+            addToBurger={props.addToBurger}
           />
         ))
       }

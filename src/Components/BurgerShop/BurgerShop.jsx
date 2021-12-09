@@ -19,7 +19,7 @@ const BurgerShop = () => {
 
   const removeFromBurger = (idx) => {
     return(
-      setStack(stack.filter((i) => i !== idx))
+      setStack(stack.filter((ingred, i) => i !== idx))
     )
   }
 
@@ -32,7 +32,6 @@ const BurgerShop = () => {
       <section>
         <IngredientList 
           ingredients={ingredients}
-          stack={stack}
           addToBurger={addToBurger}
         />
         <BurgerStack 
