@@ -4,12 +4,19 @@ import { ingredients } from '../../data/burger-data'
 import IngredientList from './IngredientList'
 import BurgerStack  from './BurgerStack'
 import { useState } from 'react'
+import Ingredient from './Ingredient'
+
 
 const BurgerShop = () => {
   console.log(ingredients)
   
-  const [stack] = useState([])
+  const [stack, setStack] = useState([])
 
+  const addToBurger = (Ingredient) => {
+    return(
+      setStack([...stack, Ingredient])
+    )
+  }
 
   return (
     <div className="burger-shop">
@@ -20,6 +27,7 @@ const BurgerShop = () => {
       <section>
         <IngredientList 
           stack={stack}
+          addToBurger={addToBurger}
         />
         <BurgerStack 
           ingredients={ingredients}
