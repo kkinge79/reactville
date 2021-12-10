@@ -23,6 +23,8 @@ const SuperMarket = () => {
           setProductCategory={setProductCategory}
         />
         <DisplayProducts
+          products={products}
+          productCategory={productCategory}
         />
       </section>
         <Cart
