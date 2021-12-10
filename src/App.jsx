@@ -19,6 +19,7 @@ const App = () => {
         <Route path="/burgers"
           element={<BurgerShop />}
         />
+        <Route path="/market"/>
       </Routes>
     </main>
     </>
