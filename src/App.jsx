@@ -5,6 +5,7 @@ import Landing from './Components/Landing/Landing'
 import BurgerShop from './Components/BurgerShop/BurgerShop'
 import Nav from './Components/Nav/Nav'
 import { useState } from 'react'
+import SuperMarket from './Components/SuperMarket/SuperMarket'
 
 const App = () => {
   
@@ -26,7 +27,8 @@ const App = () => {
         <Route path="/burgers"
           element={<BurgerShop />}
         />
-        <Route path="/market"/>
+        <Route path="/market" element={<SuperMarket />}
+        />
       </Routes>
     </main>
     </>
