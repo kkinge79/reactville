@@ -1,21 +1,31 @@
 import React from 'react'
+import { useState } from 'react'
 import CartItem from './CartItem'
 
 
 const Cart = (props) => {
+const [message, setMessage] = useState('')
+  
+  const format = (num) => (Math.round(num * 100) / 100).toFixed(2)
+  
+  const total = format(props.cart.reduce((sum, item) => {
+    return item.quantity > 1 ?
+    sum + (item.price * item.quantity)
+    :
+    sum + item.price
+  }, 0))
+  
+  const clearCart = () => {
+    props.setCart([])
+    setMessage('')
+  }
 
-const clearCart = () => {
-  props.setCart([])
-}
+  const handleCheckout = () => {
+    const checkoutStatus = props.handleExchange(total)
+    checkoutStatus ? clearCart() : setMessage('Payment declined!')
+  }
 
-const format = (num) => (Math.round(num * 100) / 100).toFixed(2)
 
-const total = format(props.cart.reduce((sum, item) => {
-  return item.quantity > 1 ?
-  sum + (item.price * item.quantity)
-  :
-  sum + item.price
-}, 0))
 
   return (
     <div className="cart">
@@ -32,7 +42,7 @@ const total = format(props.cart.reduce((sum, item) => {
         <p>{total}</p>
       </div>
 
-      <button>CHECKOUT</button>
+      <button onClick={handleCheckout}>CHECKOUT</button>
       <button onClick={clearCart}>CLEAR CART</button>
     </div>
   )

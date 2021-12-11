@@ -8,9 +8,10 @@ import Cart from './Cart'
 // Components & Data
 import { products } from '../../data/market-data'
 
-const SuperMarket = () => {
+const SuperMarket = (props) => {
   const [cart, setCart] = useState([])
   const [productCategory, setProductCategory] = useState('Produce')
+  const [toggleCart, setToggleCart] = useState(true)
 
   const addToCart = (item) => {
     if (cart.find(elem => elem.id === item.id)) {
@@ -49,6 +50,8 @@ const SuperMarket = () => {
         <MarketNav
           products={products}
           setProductCategory={setProductCategory}
+          toggleCart={toggleCart}
+          setToggleCart={setToggleCart}
         />
         <DisplayProducts
           products={products}
@@ -60,6 +63,7 @@ const SuperMarket = () => {
         cart={cart}
         removeFromCart={removeFromCart}
         setCart={setCart}
+        handleExchange={props.handleExchange}
         />
     </div>
   )
