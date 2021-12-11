@@ -12,9 +12,23 @@ const SuperMarket = () => {
   const [cart, setCart] = useState([])
   const [productCategory, setProductCategory] = useState('Produce')
 
+  const addToCart = (item) => {
+    console.log(item)
+    if (cart.find(elem => elem.id === item.id)) {
+      setCart(
+        cart.map(
+          (elem) => elem.id === item.id ?
+            { ...elem, quantity: elem.quantity + 1 }
+            :
+            elem
+        )
+      )
+    } else {
+      setCart([{ ...item, quantity: 1 }, ...cart])
+    }
+  }
 
 
-  console.log(products)
   return (
     <div className="super-market">
       <section>
@@ -25,9 +39,11 @@ const SuperMarket = () => {
         <DisplayProducts
           products={products}
           productCategory={productCategory}
-        />
+          addToCart={addToCart}
+          />
       </section>
         <Cart
+        cart={cart}
         />
     </div>
   )
