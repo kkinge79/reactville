@@ -13,7 +13,6 @@ const SuperMarket = () => {
   const [productCategory, setProductCategory] = useState('Produce')
 
   const addToCart = (item) => {
-    console.log(item)
     if (cart.find(elem => elem.id === item.id)) {
       setCart(
         cart.map(
@@ -25,6 +24,21 @@ const SuperMarket = () => {
       )
     } else {
       setCart([{ ...item, quantity: 1 }, ...cart])
+    }
+  }
+
+  const removeFromCart = (item) => {
+    if (item.quantity > 1) {
+      setCart(
+        cart.map(
+          (elem) => elem.id === item.id ?
+          {...item, quantity: item.quantity - 1}
+          :
+          elem
+        )
+      )
+    } else {
+      setCart(cart.filter((elem) => elem.id !== item.id))
     }
   }
 
@@ -44,6 +58,8 @@ const SuperMarket = () => {
       </section>
         <Cart
         cart={cart}
+        removeFromCart={removeFromCart}
+        setCart={setCart}
         />
     </div>
   )
